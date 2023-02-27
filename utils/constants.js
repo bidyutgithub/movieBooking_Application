@@ -17,8 +17,25 @@ const userStatus = {
     rejected:"REJECTED"
 }
 
+const bookingStatus={
+    inProgress:"IN_PROGRESS",
+    completed:"COMPLETED",
+    cancelled:"CANCELLED",
+    expired:"EXPIRED",
+    failed:"FAILED"
+}
+
+const paymentStatus = {
+    pending:"PENDING",
+    success:"SUCCESS",
+    failed:"FAILED"
+}
+
 module.exports = {
     releaseStatus:releaseStatus,
     userTypes,
-    userStatus
+    userStatus,
+    bookingStatus,
+    ticketPrice:250,
+    paymentStatus
 }

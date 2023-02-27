@@ -57,3 +57,24 @@ exports.deleteMovie = async(req,res)=>{
     })
     res.status(200).send({message:` Successfully delete movie with id:${req.params.id}`})
 }
+
+exports.getTheatersForAMovie= async (req,res)=>{
+
+    //find the movieId 
+    const movie = req.params.movieId;
+
+    //validate movieId 
+    const savedMovie = await Movie.findById({_id:movie});
+
+    if(!savedMovie){
+        res.status(400).send({message:"Invalid Movie Id"});
+    }
+
+    //get all the theatres 
+    const savedTheaters = await Theatre.find({});
+
+    const validTheaters = savedTheaters.filter(theater => theater.movies.includes(movie));
+
+    res.status(200).send(validTheaters);
+
+}
